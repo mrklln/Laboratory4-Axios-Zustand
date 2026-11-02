@@ -54,7 +54,6 @@ function Home() {
             {/*This is the axios section for the sample users*/}
             
             <h1 className="font-bold text-lg mb-1 text-white"> Users</h1>
-            <p className="text-gray-500 text-sm mb-2">Loaded from DummyJSON using Axios.</p>
 
             {/* message while loading */}
             {

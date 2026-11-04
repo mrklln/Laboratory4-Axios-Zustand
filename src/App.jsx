@@ -15,7 +15,7 @@ function App() {
         <div className="w-full min-h-screen p-3 sm:p-6 bg-linear-to-br from-slate-600 to-slate-950">
             <Navbar />
             <Routes>
-                <Route path="/" element={<Navigate to="/home" replace />} />
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/groups" element={<Groups />} />

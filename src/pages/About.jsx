@@ -64,7 +64,7 @@ function About() {
             </ul>
 
             {/* developers section: user information from the DummyJSON API */}
-            <h2 className="font-bold text-lg mb-1">Developers</h2>
+            <h2 className="font-bold text-lg mb-1">Sample Users</h2>
             <p className="text-gray-500 italic text-sm mb-3">User information loaded with Axios from dummyjson.com</p>
 
             {/* loading indicator while the data is being retrieved */}

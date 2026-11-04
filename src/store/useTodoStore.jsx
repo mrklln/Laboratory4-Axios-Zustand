@@ -42,6 +42,14 @@ export const useTodoStore = create(
         set((state) => ({
           tasks: state.tasks.filter((t) => t.id !== id),
         })),
+
+      // move a task into a group
+      assignTask: (id, groupId) =>
+        set((state) => ({
+          tasks: state.tasks.map((t) =>
+            t.id === id ? { ...t, groupId } : t
+          ),
+        })),
     }),
     { name: "app-storage" }, //persist the store in localStorage
   ),

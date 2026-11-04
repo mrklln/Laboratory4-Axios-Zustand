@@ -57,10 +57,10 @@ function GroupTask() {
                             {t.title} <small>({t.done ? 'Done' : 'Not Done'})</small>
                         </span>
                         <span className="flex gap-2">
-                            <button onClick={() => toggleTask(t.id)} className="px-3 py-1 rounded-lg bg-green-600 text-white">
+                            <button onClick={() => toggleTask(t.id)} className="px-3 py-1 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">
                                 {t.done ? 'Undo' : 'Done'}
                             </button>
-                            <button onClick={() => { if (window.confirm("Delete this task?")) deleteTask(t.id)}} className="px-3 py-1 rounded-lg bg-red-600 text-white">
+                            <button onClick={() => { if (window.confirm("Delete this task?")) deleteTask(t.id)}} className="px-3 py-1 rounded-lg bg-red-600 text-white hover:bg-red-700 transition">
                                 Delete
                             </button>
                         </span>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Tasklist from "./Tasklist"
 
-function Todolist({ groups = [], tasks, addTask, toggleTask, deleteTask }) {
+function Todolist({ groups = [], tasks, addTask, toggleTask, deleteTask, assignTask }) {
     const [text, setText] = useState(""); // React state stores the input, while setText updates its value.
                                           // the event handling is onClick, onKeyDown, and onChange. 
 
@@ -33,14 +33,14 @@ function Todolist({ groups = [], tasks, addTask, toggleTask, deleteTask }) {
     })
 
     return (
-        <div className='bg-white rounded-xl w-full max-w-3xl mx-auto shadow-lg p-4 sm:p-6'>
+        <div className='bg-white rounded-xl w-full max-w-3xl mx-auto shadow-lg p-4 sm:p-6 mb-10'>
             <h1 className='sm:text-2xl text-center font-bold'><span className="mr-2">📝</span>To-Do-List</h1>
-            <p className='text-center text-sm italic'>Laboratory 3 with router</p>
+            <p className='text-center text-sm italic'>Laboratory 4 with Router, Axios, and Zustand</p>
 
             <div className="flex gap-2 mb-4">
                 <input className="flex-1 min-w-0 border border-gray-400 rounded px-3 py-2" type="text" value={text} onChange={(e) => setText(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleAdd()} placeholder="Add a task..." />
-                <button className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer" onClick={handleAdd}>Add Task</button>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer transition hover:bg-blue-600" onClick={handleAdd}>Add Task</button>
             </div>
 
             <div className="p-3 sm:p-4 mb-4">
@@ -50,20 +50,20 @@ function Todolist({ groups = [], tasks, addTask, toggleTask, deleteTask }) {
                 ) : (
                     <ul className="space-y-2 max-h-44 overflow-y-auto pr-1">
                         {notDoneTasks.map((task) => (
-                            <Tasklist key={task.id} task={ toItem(task) } onToggle={toggleTask} onDelete={deleteTask} />
+                            <Tasklist key={task.id} task={toItem(task)} groups={groups} onToggle={toggleTask} onDelete={deleteTask} onAssign={assignTask} />
                         ))}
                     </ul>
                 )}
             </div>
 
             <div className="p-3 sm:p-4">
-                <h2 className="font-bold text-lg mb-2">Done ({doneTasks.length})</h2>
+                <h2 className="font-bold text-lg mb-2 ">Done ({doneTasks.length})</h2>
                 {doneTasks.length === 0 ? (
                     <p className="text-gray-500 italic">No completed tasks.</p>
                 ) : (
                     <ul className="space-y-2 max-h-44 overflow-y-auto pr-1">
                         {doneTasks.map((task) => (
-                            <Tasklist key={task.id} task={toItem(task)} onToggle={toggleTask} onDelete={deleteTask} />
+                            <Tasklist key={task.id} task={toItem(task)} groups={groups} onToggle={toggleTask} onDelete={deleteTask} onAssign={assignTask} />
                         ))}
                     </ul>
                 )}
@@ -71,7 +71,7 @@ function Todolist({ groups = [], tasks, addTask, toggleTask, deleteTask }) {
 
             {tasks.length > 0 && (
                 <div className="flex justify-center mt-4">
-                    <button className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer" onClick={clearAll}>Clear All</button>
+                    <button className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer transition hover:bg-red-600" onClick={clearAll}>Clear All</button>
                 </div>
             )}
         </div>
